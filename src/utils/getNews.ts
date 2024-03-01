@@ -12,9 +12,12 @@ const getNews = async (): Promise<ResponseData> => {
   return res.json();
 };
 
-const getFilteredNews = (articles: IArticle[], filter: string): IArticle[] => {
+const getFilteredNews = (
+  articles: IArticle[] | undefined,
+  filter: string
+): IArticle[] => {
   const res: IArticle[] = [];
-  articles.filter((article) => {
+  articles?.filter((article) => {
     if (
       article.category.includes(filter) ||
       article.country.includes(filter) ||

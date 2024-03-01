@@ -15,10 +15,9 @@ interface INewsItem {
 
 const NewsItem: React.FC<INewsItem> = ({ article }) => {
   return (
-    <div>
-      <h1>
-        [{article.category}]:{article.name}
-      </h1>
+    <div className="py-5">
+      <h1 className="underline font-bold text-xl">{article.name}</h1>
+      <span className="text-sm">sup homies</span>
       <div>{article.description}</div>
     </div>
   );
