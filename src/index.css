@@ -18,6 +18,7 @@ body {
   min-height: 100vh;
 
   --text: #1e1e2c;
+  --text-minor: #3c3c3b;
   --bg: #f8f8f8;
   --btn: #0ce9b2;
   --bg-minor: #ffffff;
@@ -27,8 +28,8 @@ body {
 }
 
 body.dark {
-  --text: #ffffff;
-  --text-minor: #ecf2f8;
+  --text: #fffdf7;
+  --text-minor: #d8d5db;
   --btn: #4e67eb;
   --bg: #1e1e2c;
   --bg-minor: #2d2d44;

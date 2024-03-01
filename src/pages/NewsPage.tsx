@@ -32,7 +32,7 @@ const NewsPage = () => {
     <>
       <div>
         <input
-          className="text-black"
+          className="text-black p-2 focus:outline-none rounded-md w-1/3 bg-[--bg] text-[--text] border border-[--text] focus:text-[--text]"
           type="text"
           placeholder="Find news here"
           onChange={handleSearchInputChange}

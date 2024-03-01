@@ -17,7 +17,9 @@ const NewsItem: React.FC<INewsItem> = ({ article }) => {
   return (
     <div className="py-5">
       <h1 className="underline font-bold text-xl">{article.name}</h1>
-      <span className="text-sm">sup homies</span>
+      <div className="text-sm text-[--text-minor]">
+        {article.category} / {article.country} / {article.id}
+      </div>
       <div>{article.description}</div>
     </div>
   );
