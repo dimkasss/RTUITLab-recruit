@@ -1,5 +1,5 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { getFilteredNews, getNews } from "../utils/getNews";
+import { getFilteredNews, getNews } from "../utils/newsHandler";
 import NewsItem, { IArticle } from "../components/NewsItem";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "../utils/useDebounce";
@@ -30,6 +30,7 @@ const NewsPage = () => {
 
   return (
     <>
+
       <div>
         <input
           className="text-black p-2 focus:outline-none rounded-md w-1/3 bg-[--bg] text-[--text] border border-[--text] focus:text-[--text]"
