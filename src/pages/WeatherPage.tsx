@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCurrentPos } from "../utils/positionHandler";
 
 const WeatherPage = () => {
@@ -12,7 +12,7 @@ const WeatherPage = () => {
     setPos(getCurrentPos())
   }, [])
 
-  if (pos == undefined) return <div>Position could not be handled</div>
+  if (pos === undefined) return <div>Position cannot be found</div>
 
   return (
     <>
