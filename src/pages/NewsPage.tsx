@@ -1,5 +1,5 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { getFilteredNews, getNews } from "../utils/getNews";
+import { getFilteredNews, getNews } from "../utils/newsHandler";
 import NewsItem, { IArticle } from "../components/NewsItem";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "../utils/useDebounce";
