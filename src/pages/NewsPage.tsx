@@ -1,30 +1,46 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { getFilteredNews, getNews } from "../utils/newsHandler";
+import {
+  getFilteredNews,
+  getNews,
+  getNewsCategories,
+} from "../utils/newsHandler";
 import NewsItem, { IArticle } from "../components/NewsItem";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../utils/useDebounce";
 import DropDownNewsFilter from "../components/DropDownNewsFilter/DropDownNewsFilter";
 
 const NewsPage = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["news"],
-    queryFn: () => getNews(),
+    queryFn: getNews,
     placeholderData: keepPreviousData,
   });
 
   const [filteredNews, setFilteredNews] = useState<IArticle[]>(
     data?.sources ?? []
   );
+  const [category, setCategory] = useState<string>("");
   const [searchInput, setSearchInput] = useState("");
   const { debouncedSearchInput } = useDebounce(searchInput, 500);
+
+  const newsCategories = useMemo(
+    () => getNewsCategories(data?.sources),
+    [data?.sources]
+  );
+
+  const changeCategory = (category: string) => {
+    setCategory(category);
+  };
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
   useEffect(() => {
-    setFilteredNews(getFilteredNews(data?.sources, debouncedSearchInput));
-  }, [debouncedSearchInput, data?.sources]);
+    setFilteredNews(
+      getFilteredNews(data?.sources, debouncedSearchInput, category)
+    );
+  }, [debouncedSearchInput, data?.sources, category]);
 
   if (error) return <div>Error: news service is not reachable</div>;
   if (isPending)
@@ -44,7 +60,10 @@ const NewsPage = () => {
             placeholder="Find news here"
             onChange={handleSearchInputChange}
           />
-          <DropDownNewsFilter />
+          <DropDownNewsFilter
+            categories={newsCategories}
+            changeCategory={changeCategory}
+          />
         </div>
 
         {filteredNews.length > 0 ? (

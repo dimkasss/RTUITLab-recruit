@@ -8,7 +8,10 @@ interface IButton {
 
 const Button: React.FC<IButton> = ({ children, onClick }) => {
   return (
-    <button onClick={onClick} className={`bg-[--btn] p-3 rounded-xl`}>
+    <button
+      onClick={onClick}
+      className={`bg-[--btn] p-1 px-3 rounded-xl border border-[--bg-minor]`}
+    >
       {children}
     </button>
   );

@@ -15,7 +15,8 @@ const NavButton: FC<INavButton> = ({ children, to }) => {
           isPending ? "pending" : "",
           isActive ? "font-semibold" : "",
           isTransitioning ? "transitioning" : "",
-        ].join(" ") + "border border-[--text] p-3 px-5 rounded-xl m-3"
+        ].join(" ") +
+        " border border-[--text] p-3 px-5 rounded-xl hover:border-white hover:bg-[--btn] transition duration-75"
       }
     >
       {children}

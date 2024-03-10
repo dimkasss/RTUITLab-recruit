@@ -20,9 +20,10 @@ const Navbar = () => {
         ></img>
       </Link>
 
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between *:m-2">
         <NavButton to="/">Main</NavButton>
         <NavButton to="/news">News</NavButton>
+        <NavButton to="/weather">Weather</NavButton>
         <Button onClick={toggleTheme}>
           Change theme to {theme === "light" ? "dark" : "light"}
         </Button>
