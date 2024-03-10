@@ -7,7 +7,7 @@ interface IButton {
 
 const Button: React.FC<IButton> = ({ children, onClick }) => {
   return (
-    <button onClick={onClick} className="bg-[--btn] p-3 rounded-xl">
+    <button onClick={onClick} className="bg-[--btn] rounded-xl m-3 px-4">
       {children}
     </button>
   );

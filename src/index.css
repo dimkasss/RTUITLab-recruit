@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  height: 100%;
-}
-
 html,
 body {
   padding: 0;
@@ -16,15 +12,15 @@ body {
   font-family: "Roboto", "Times New Roman", Times, serif;
   width: 100%;
   min-height: 100vh;
+  color: var(--text);
+  background: var(--bg-minor);
 
   --text: #1e1e2c;
   --text-minor: #3c3c3b;
   --bg: #f8f8f8;
   --btn: #0ce9b2;
   --bg-minor: #ffffff;
-
-  color: var(--text);
-  background: var(--bg-minor);
+  --active: ;
 }
 
 body.dark {
