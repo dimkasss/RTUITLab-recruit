@@ -10,22 +10,24 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <div className="flex justify-between border-b-2 p-3">
+    <div className="flex justify-between border-b-2 p-1 md:p-3">
       <Link to="/" className="self-center">
         <img
           src={theme === "light" ? RTUITLabLogoBlack : RTUITLabLogoLight}
           alt="RTUITLab-recruit"
-          width="50px"
-          className="text-[--text]"
+          className="text-[--text] w-[40px] md:w-[50px]"
         ></img>
       </Link>
 
-      <div className="flex flex-row justify-between *:m-2">
+      <div className="flex flex-row justify-between *:m-1 md:*:m-2">
         <NavButton to="/">Main</NavButton>
         <NavButton to="/news">News</NavButton>
         <NavButton to="/weather">Weather</NavButton>
         <Button onClick={toggleTheme}>
-          Change theme to {theme === "light" ? "dark" : "light"}
+          {theme === "light" ?
+            <img src="src/assets/lightmode.png" className="w-[20px] md:w-[25px]" /> :
+            <img src="src/assets/nightmode.png" className="w-[20px] md:w-[25px]" /> 
+          }
         </Button>
       </div>
     </div>

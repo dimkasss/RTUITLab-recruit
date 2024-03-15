@@ -17,6 +17,7 @@ body {
 
   --text: #1e1e2c;
   --text-minor: #3c3c3b;
+  --border-half-opacity: rgba(156, 156, 156, 0.5);
   --bg: #f8f8f8;
   --btn: #0ce9b2;
   --bg-minor: #ffffff;
@@ -26,6 +27,7 @@ body {
 body.dark {
   --text: #fffdf7;
   --text-minor: #d8d5db;
+  --border-half-opacity: rgba(167, 167, 167, 0.5);
   --btn: #4e67eb;
   --bg: #1e1e2c;
   --bg-minor: #2d2d44;
