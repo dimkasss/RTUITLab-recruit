@@ -1,9 +1,5 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import {
-  getFilteredNews,
-  getNews,
-  getNewsCategories,
-} from "../utils/newsHandler";
+import { getFilteredNews, getNews, getNewsAuthors } from "../utils/newsHandler";
 import NewsItem, { IArticle } from "../components/NewsItem";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../utils/useDebounce";
@@ -16,16 +12,23 @@ const NewsPage = () => {
     placeholderData: keepPreviousData,
   });
 
+  const [isFavOnly, setFavOnly] = useState(false);
+
   const [filteredNews, setFilteredNews] = useState<IArticle[]>(
-    data?.sources ?? []
+    data?.articles ?? []
   );
+
+  const [fav, setFav] = useState<IArticle[]>(
+    localStorage.getItem("fav") ? JSON.parse(localStorage.getItem("fav")!) : []
+  );
+
   const [category, setCategory] = useState<string>("");
   const [searchInput, setSearchInput] = useState("");
   const { debouncedSearchInput } = useDebounce(searchInput, 500);
 
   const newsCategories = useMemo(
-    () => getNewsCategories(data?.sources),
-    [data?.sources]
+    () => getNewsAuthors(data?.articles),
+    [data?.articles]
   );
 
   const changeCategory = (category: string) => {
@@ -37,10 +40,17 @@ const NewsPage = () => {
   };
 
   useEffect(() => {
+    console.log("@useEffect ");
     setFilteredNews(
-      getFilteredNews(data?.sources, debouncedSearchInput, category)
+      getFilteredNews(
+        data?.articles,
+        debouncedSearchInput,
+        category,
+        isFavOnly,
+        fav
+      )
     );
-  }, [debouncedSearchInput, data?.sources, category]);
+  }, [debouncedSearchInput, data, category, isFavOnly, fav]);
 
   if (error) return <div>Error: news service is not reachable</div>;
   if (isPending)
@@ -53,22 +63,37 @@ const NewsPage = () => {
   return (
     <>
       <section>
-        <div className="flex">
-          <input
-            className="text-black p-2 focus:outline-none rounded-md w-1/3 bg-[--bg] text-[--text] border border-[--text] focus:text-[--text]"
-            type="text"
-            placeholder="Find news here"
-            onChange={handleSearchInputChange}
-          />
-          <DropDownNewsFilter
-            categories={newsCategories}
-            changeCategory={changeCategory}
-          />
+        <div className="flex w-full justify-between">
+          <div className="flex w-2/3">
+            <input
+              className="text-black p-2 focus:outline-none rounded-md w-1/3 md:w-2/3 bg-[--bg] text-[--text] border border-[--text] focus:text-[--text]"
+              type="text"
+              placeholder="Find news here"
+              onChange={handleSearchInputChange}
+            />
+            <DropDownNewsFilter
+              label={category}
+              categories={newsCategories}
+              changeCategory={changeCategory}
+            />
+          </div>
+          <label className="*:px-2 flex items-center">
+            <input
+              onClick={() => setFavOnly(!isFavOnly)}
+              type="checkbox"
+              className="scale-110"
+            />
+            <span>Favorite only</span>
+          </label>
         </div>
-
         {filteredNews.length > 0 ? (
           filteredNews.map((article) => (
-            <NewsItem key={article.id} article={article} />
+            <NewsItem
+              setFav={setFav}
+              fav={fav}
+              key={article.title}
+              article={article}
+            />
           ))
         ) : (
           <div className="flex justify-center items-center py-5">

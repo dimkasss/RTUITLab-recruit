@@ -2,12 +2,13 @@ import { IArticle } from "../components/NewsItem";
 
 export interface ResponseNewsData {
   status: string;
-  sources: IArticle[];
+  totalResults: number;
+  articles: IArticle[];
 }
 
 const getNews = async (): Promise<ResponseNewsData> => {
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines/sources?apiKey=e4e3e1684c864397a7c83f49405f6ee0`
+    `https://newsapi.org/v2/top-headlines/?country=us&apiKey=e4e3e1684c864397a7c83f49405f6ee0`
   );
   return res.json();
 };
@@ -15,33 +16,41 @@ const getNews = async (): Promise<ResponseNewsData> => {
 const getFilteredNews = (
   articles: IArticle[] | undefined,
   filter: string,
-  category: string
+  author: string,
+  isFavOnly: boolean,
+  fav: IArticle[]
 ): IArticle[] => {
   const res: IArticle[] = [];
   articles?.filter((article) => {
     if (
-      (article.category.includes(filter) ||
-        article.country.includes(filter) ||
-        article.description.includes(filter) ||
-        article.id.includes(filter) ||
-        article.language.includes(filter) ||
-        article.name.includes(filter) ||
-        article.url.includes(filter)) &&
-      (article.category == category ||
-        category == "" ||
-        category == "No specified category")
+      (article.author?.includes(filter) ||
+        article.title.includes(filter) ||
+        article.description?.includes(filter) ||
+        article.content?.includes(filter) ||
+        article.publishedAt.includes(filter)) &&
+      (article.author == author ||
+        author == "" ||
+        author == "No specified author")
     ) {
-      res.push(article);
+      if (!isFavOnly) res.push(article);
+      else if (
+        fav.filter((f) => JSON.stringify(f) == JSON.stringify(article)).length >
+        0
+      ) {
+        res.push(article);
+      }
     }
   });
   return res;
 };
 
-const getNewsCategories = (articles?: IArticle[]) => {
-  const categories = new Set<string>();
-  categories.add("No specified category");
-  articles?.map((article) => categories.add(article.category));
-  return categories;
+const getNewsAuthors = (articles?: IArticle[]) => {
+  const authors = new Set<string>();
+  authors.add("No specified author");
+  articles?.map((article) => {
+    if (article.author != null) authors.add(article.author);
+  });
+  return authors;
 };
 
-export { getNews, getFilteredNews, getNewsCategories };
+export { getNews, getFilteredNews, getNewsAuthors };

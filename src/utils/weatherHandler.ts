@@ -126,6 +126,7 @@ const getWeather = async (pos: number[]): Promise<WeatherData> => {
 
 const getForecastWeather = (data?: WeatherData, hoursRequired = 24): (HourData[] | undefined)[] => {
   const now = new Date();
+  now.setHours(now.getHours() - 1); // get previous hour as a start point
   let hoursAdded = 0;
   const hoursOfFirstDay = data?.forecast.forecastday[0].hour.filter(h => {
     if (h.time_epoch * 1000 >= now.valueOf() && hoursAdded < hoursRequired) {

@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-y: scroll;
+}
+
 html,
 body {
   padding: 0;
@@ -19,9 +23,9 @@ body {
   --text-minor: #3c3c3b;
   --border-half-opacity: rgba(156, 156, 156, 0.5);
   --bg: #f8f8f8;
+  --link: #016fff;
   --btn: #0ce9b2;
   --bg-minor: #ffffff;
-  --active: ;
 }
 
 body.dark {
@@ -29,6 +33,7 @@ body.dark {
   --text-minor: #d8d5db;
   --border-half-opacity: rgba(167, 167, 167, 0.5);
   --btn: #4e67eb;
+  --link: #8094f8;
   --bg: #1e1e2c;
   --bg-minor: #2d2d44;
 }

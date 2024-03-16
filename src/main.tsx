@@ -18,8 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<MainPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/weather" element={<WeatherPage />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path="weather" element={<WeatherPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
