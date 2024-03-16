@@ -72,7 +72,7 @@ const NewsPage = () => {
               onChange={handleSearchInputChange}
             />
             <DropDownNewsFilter
-              label={category}
+              label={category == "" ? "Categories" : category}
               categories={newsCategories}
               changeCategory={changeCategory}
             />
