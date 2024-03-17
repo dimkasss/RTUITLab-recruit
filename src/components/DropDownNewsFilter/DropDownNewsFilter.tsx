@@ -17,8 +17,7 @@ const DropDownNewsFilter: React.FC<IDropDownNewsFilter> = ({
       theme={DropDownTheme}
       label={label}
       color="[--text]"
-      className=""
-      dismissOnClick={false}
+      dismissOnClick={true}
     >
       {[...categories].map((c) => (
         <Dropdown.Item key={c} onClick={() => changeCategory(c)}>
