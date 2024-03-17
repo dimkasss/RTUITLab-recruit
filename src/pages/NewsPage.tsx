@@ -40,7 +40,6 @@ const NewsPage = () => {
   };
 
   useEffect(() => {
-    console.log("@useEffect ");
     setFilteredNews(
       getFilteredNews(
         data?.articles,

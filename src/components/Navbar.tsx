@@ -23,11 +23,19 @@ const Navbar = () => {
         <NavButton to="/">Main</NavButton>
         <NavButton to="/news">News</NavButton>
         <NavButton to="/weather">Weather</NavButton>
+        <NavButton to="/clock">Clock</NavButton>
         <Button onClick={toggleTheme}>
-          {theme === "light" ?
-            <img src="src/assets/lightmode.png" className="w-[20px] md:w-[25px]" /> :
-            <img src="src/assets/nightmode.png" className="w-[20px] md:w-[25px]" /> 
-          }
+          {theme === "light" ? (
+            <img
+              src="src/assets/lightmode.png"
+              className="w-[20px] md:w-[25px]"
+            />
+          ) : (
+            <img
+              src="src/assets/nightmode.png"
+              className="w-[20px] md:w-[25px]"
+            />
+          )}
         </Button>
       </div>
     </div>

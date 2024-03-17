@@ -16,7 +16,10 @@ export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   useEffect(() => {
-    if (theme != localStorage.getItem("theme") && localStorage.getItem("theme") != undefined) {
+    if (
+      theme != localStorage.getItem("theme") &&
+      localStorage.getItem("theme") !== undefined
+    ) {
       setTheme(localStorage.getItem("theme") as Theme);
     }
     theme === "light"
