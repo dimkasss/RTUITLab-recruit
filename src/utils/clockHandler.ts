@@ -5,8 +5,15 @@ const getDisplayingTimeInfo = (date: Date): ActiveSidesList[] => {
   const minutes = date.getMinutes().toString();
   const seconds = date.getSeconds().toString();
 
-  const hPos1 = Number(hours[0]);
-  const hPos2 = Number(hours[1]);
+  let hPos1;
+  let hPos2;
+  if (hours.length === 1) {
+    hPos1 = 0;
+    hPos2 = Number(hours[0]);
+  } else {
+    hPos1 = Number(hours[0]);
+    hPos2 = Number(hours[1]);
+  }
 
   let mPos1;
   let mPos2;
