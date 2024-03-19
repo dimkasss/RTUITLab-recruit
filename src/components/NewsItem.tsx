@@ -40,7 +40,7 @@ const NewsItem: React.FC<INewsItem> = ({ article, fav, setFav }) => {
     <div className="py-5">
       <h1 className="font-bold text-xl">{article.title}</h1>
       <div className="text-sm text-[--text-minor]">
-        {article.author} /
+        {article.author ?? "Unknown author"} /
         {new Date(article.publishedAt).toLocaleString("ru-RU", {
           hour: "2-digit",
           minute: "2-digit",
@@ -51,8 +51,10 @@ const NewsItem: React.FC<INewsItem> = ({ article, fav, setFav }) => {
       </div>
       <div>{article.content}</div>
       <a
-        target="_blank"
-        href={article.url}
+        onClick={() => {
+          window.open(article.url);
+        }}
+        href="#"
         className="text-[--link] hover:underline"
       >
         Source
