@@ -1,19 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Digit from "../components/Clock/Digit";
 import Divider from "../components/Clock/Divider";
-import { getDisplayingTimeInfo } from "../utils/clockHandler";
+import { getDisplayingTimeInfo, timezones } from "../utils/clockHandler";
 import { Checkbox, Label } from "flowbite-react";
+import DropDownNewsFilter from "../components/DropDownNewsFilter/DropDownNewsFilter";
 
 const ClockPage = () => {
   const [isTwelveHourFormat, setIsTwelveHourFormat] = useState(false);
   const [withSeconds, setWithSeconds] = useState(true);
-
+  const [timeZone, setTimeZone] = useState("Europe/Moscow");
   const [date, setDate] = useState(new Date());
+
   const dateRef = useRef(new Date());
 
   const [displayingTimeInfo, meridiem] = useMemo(
-    () => getDisplayingTimeInfo(date, isTwelveHourFormat),
-    [date, isTwelveHourFormat]
+    () => getDisplayingTimeInfo(date, timeZone, isTwelveHourFormat),
+    [date, timeZone, isTwelveHourFormat]
   );
 
   useEffect(() => {
@@ -72,6 +74,11 @@ const ClockPage = () => {
           </Label>
         </div>
       </div>
+      <DropDownNewsFilter
+        data={timezones}
+        label={timeZone}
+        onPick={(d: string) => setTimeZone(d)}
+      />
       <div className="w-full flex flex-row items-center justify-center">
         <Digit activeSides={displayingTimeInfo[0]} />
         <Digit activeSides={displayingTimeInfo[1]} />

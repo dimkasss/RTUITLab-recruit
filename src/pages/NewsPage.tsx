@@ -72,8 +72,8 @@ const NewsPage = () => {
             />
             <DropDownNewsFilter
               label={category == "" ? "Categories" : category}
-              categories={newsCategories}
-              changeCategory={changeCategory}
+              data={newsCategories}
+              onPick={changeCategory}
             />
           </div>
           <label className="*:px-2 flex items-center">

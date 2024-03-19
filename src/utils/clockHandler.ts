@@ -2,18 +2,22 @@ import { ActiveSidesList } from "../components/Clock/Digit";
 
 const getDisplayingTimeInfo = (
   date: Date,
+  timezone: string,
   isTwelveHourFormat: boolean
 ): [ActiveSidesList[], string] => {
   const format = isTwelveHourFormat ? "en-US" : "ru-RU";
 
   const hours = date.toLocaleString(format, {
     hour: "2-digit",
+    timeZone: timezone,
   });
   const minutes = date.toLocaleString(format, {
     minute: "2-digit",
+    timeZone: timezone,
   });
   const seconds = date.toLocaleString(format, {
     second: "2-digit",
+    timeZone: timezone,
   });
 
   let hPos1, hPos2;
@@ -78,4 +82,65 @@ const getDigitalFromNumerical = (num: number): ActiveSidesList => {
   return [false, false, false, false, false, false, false];
 };
 
-export { getDisplayingTimeInfo };
+const timezones = new Set([
+  "Europe/Kaliningrad",
+  "Europe/Moscow",
+  "Europe/Simferopol",
+  "Europe/Kirov",
+  "Europe/Astrakhan",
+  "Europe/Volgograd",
+  "Europe/Saratov",
+  "Europe/Ulyanovsk",
+  "Europe/Samara",
+  "Asia/Yekaterinburg",
+  "Asia/Omsk",
+  "Asia/Novosibirsk",
+  "Asia/Barnaul",
+  "Asia/Tomsk",
+  "Asia/Novokuznetsk",
+  "Asia/Krasnoyarsk",
+  "Asia/Irkutsk",
+  "Asia/Chita",
+  "Asia/Yakutsk",
+  "Asia/Khandyga",
+  "Asia/Vladivostok",
+  "Asia/Ust-Nera",
+  "Asia/Magadan",
+  "Asia/Sakhalin",
+  "Asia/Srednekolymsk",
+  "Asia/Kamchatka",
+  "Asia/Anadyr",
+  "Europe/Belgrade",
+  "Asia/Dubai",
+  "Europe/Tirane",
+  "Asia/Yerevan",
+  "Europe/Vienna",
+  "Australia/Melbourne",
+  "Australia/Sydney",
+  "Europe/Minsk",
+  "America/Toronto",
+  "Europe/Berlin",
+  "Europe/Copenhagen",
+  "Europe/Helsinki",
+  "Europe/Paris",
+  "Europe/London",
+  "Asia/Tbilisi",
+  "Europe/Budapest",
+  "Europe/Rome",
+  "Asia/Tokyo",
+  "Asia/Pyongyang",
+  "Asia/Seoul",
+  "Asia/Almaty",
+  "Europe/Riga",
+  "Asia/Kathmandu",
+  "Europe/Warsaw",
+  "Europe/Stockholm",
+  "Asia/Singapore",
+  "Europe/Istanbul",
+  "Europe/Kiev",
+  "America/New_York",
+  "Asia/Tashkent",
+  "America/Caracas",
+]);
+
+export { getDisplayingTimeInfo, timezones };

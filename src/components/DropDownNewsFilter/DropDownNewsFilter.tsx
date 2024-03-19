@@ -2,14 +2,14 @@ import { Dropdown } from "flowbite-react";
 import DropDownTheme from "./DropDownTheme";
 
 interface IDropDownNewsFilter {
-  categories: Set<string>;
-  changeCategory: (category: string) => void;
+  data: Set<string>;
+  onPick: (category: string) => void;
   label: string;
 }
 
 const DropDownNewsFilter: React.FC<IDropDownNewsFilter> = ({
-  categories,
-  changeCategory,
+  data,
+  onPick,
   label,
 }) => {
   return (
@@ -19,9 +19,9 @@ const DropDownNewsFilter: React.FC<IDropDownNewsFilter> = ({
       color="[--text]"
       dismissOnClick={true}
     >
-      {[...categories].map((c) => (
-        <Dropdown.Item key={c} onClick={() => changeCategory(c)}>
-          {c.charAt(0).toUpperCase() + c.slice(1)}
+      {[...data].map((d) => (
+        <Dropdown.Item key={d} onClick={() => onPick(d)}>
+          {d.charAt(0).toUpperCase() + d.slice(1)}
         </Dropdown.Item>
       ))}
     </Dropdown>
