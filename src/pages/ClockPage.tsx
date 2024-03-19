@@ -40,7 +40,7 @@ const ClockPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center *:py-5">
-      <div className="flex items-center  *:flex *:px-2 *:*:px-2">
+      <div className="flex flex-wrap items-center  *:flex justify-center *:py-2 *:px-2 *:*:px-2">
         <div>
           <Checkbox
             defaultChecked={isTwelveHourFormat}
@@ -56,11 +56,20 @@ const ClockPage = () => {
                   "https://en.wikipedia.org/wiki/Date_and_time_notation_in_the_United_States#:~:text=The%20United%20States%20uses%20the,appended%20universally%20in%20written%20language"
                 )
               }
-              href="#"
               className="text-cyan-600 hover:underline dark:text-cyan-500"
             >
               US Time format
             </a>
+          </Label>
+        </div>
+        <div>
+          <Checkbox
+            defaultChecked={withSeconds}
+            id="withSeconds"
+            onClick={() => setWithSeconds(!withSeconds)}
+          />
+          <Label htmlFor="withSeconds" className="flex">
+            Require seconds
           </Label>
         </div>
         <div>
