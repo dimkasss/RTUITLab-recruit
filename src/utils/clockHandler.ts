@@ -1,12 +1,22 @@
 import { ActiveSidesList } from "../components/Clock/Digit";
 
-const getDisplayingTimeInfo = (date: Date): ActiveSidesList[] => {
-  const hours = date.getHours().toString();
-  const minutes = date.getMinutes().toString();
-  const seconds = date.getSeconds().toString();
+const getDisplayingTimeInfo = (
+  date: Date,
+  isTwelveHourFormat: boolean
+): [ActiveSidesList[], string] => {
+  const format = isTwelveHourFormat ? "en-US" : "ru-RU";
 
-  let hPos1;
-  let hPos2;
+  const hours = date.toLocaleString(format, {
+    hour: "2-digit",
+  });
+  const minutes = date.toLocaleString(format, {
+    minute: "2-digit",
+  });
+  const seconds = date.toLocaleString(format, {
+    second: "2-digit",
+  });
+
+  let hPos1, hPos2;
   if (hours.length === 1) {
     hPos1 = 0;
     hPos2 = Number(hours[0]);
@@ -15,8 +25,7 @@ const getDisplayingTimeInfo = (date: Date): ActiveSidesList[] => {
     hPos2 = Number(hours[1]);
   }
 
-  let mPos1;
-  let mPos2;
+  let mPos1, mPos2;
   if (minutes.length === 1) {
     mPos1 = 0;
     mPos2 = Number(minutes[0]);
@@ -25,8 +34,7 @@ const getDisplayingTimeInfo = (date: Date): ActiveSidesList[] => {
     mPos2 = Number(minutes[1]);
   }
 
-  let sPos1;
-  let sPos2;
+  let sPos1, sPos2;
   if (seconds.length === 1) {
     sPos1 = 0;
     sPos2 = Number(seconds[0]);
@@ -37,11 +45,17 @@ const getDisplayingTimeInfo = (date: Date): ActiveSidesList[] => {
 
   const clockTimeNumber = [hPos1, hPos2, mPos1, mPos2, sPos1, sPos2];
 
-  const res: ActiveSidesList[] = [];
+  const sides: ActiveSidesList[] = [];
 
   clockTimeNumber.forEach((n) => {
-    res.push(getDigitalFromNumerical(n));
+    sides.push(getDigitalFromNumerical(n));
   });
+
+  const res: [ActiveSidesList[], string] = [sides, ""];
+
+  if (isTwelveHourFormat)
+    res[1] = date.getHours() > 12 || date.getHours() === 0 ? "pm" : "am";
+
   return res;
 };
 
