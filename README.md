@@ -1,3 +1,5 @@
 # RTUITLab-recruit
 
-[hi](https://github.com/RTUITLab/Recruit/blob/master/requirements/front/README.md)
+### Website for RTUITLab recruiting: [task](https://github.com/RTUITLab/Recruit/blob/master/requirements/front/README.md)
+
+
