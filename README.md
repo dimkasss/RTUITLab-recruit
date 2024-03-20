@@ -12,7 +12,17 @@ via terminal:
 * run ```cd RTUITLab-recruit```
 * check if nodejs is installed
 * run ```npm i```
-* run ```npm run dev```
-* open localhost:5173 in your browser
+* run ```npm run build```
+* run ```npm run preview```
+* open ```localhost:4173``` in your browser
 
-![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/4425ad6a-2914-4867-9d35-a7538ae04da3)
+* note: for dev mode, instead of running ```npm run build``` and ```npm run preview```, run ```npm run dev``` and open ```localhost:5173```
+
+
+![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/fbcef01b-0512-4363-819e-a7c8dc1ce3e7)
+![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/62e6a71c-52bb-4155-8f43-a91a9734f174)
+![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/6dac53c5-b1a2-42df-baf1-a27383b2b8ff)
+![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/feb91204-a4c2-4898-88a2-f674682d9482)
+![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/18468508-827a-4d52-9fdb-dbd6f42d0cfe)
+![image](https://github.com/dimkasss/RTUITLab-recruit/assets/86372213/4824fb93-24a1-4dfb-97a0-c5e1da7a1187)
+
