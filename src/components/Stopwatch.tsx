@@ -22,7 +22,7 @@ const Stopwatch = () => {
       <div>
         {Math.floor(timer / 10)}.{timer % 10} s
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center *:rounded-md *:my-1">
         <Button onClick={() => setIsRunning((isRunning) => !isRunning)}>
           Click
         </Button>
