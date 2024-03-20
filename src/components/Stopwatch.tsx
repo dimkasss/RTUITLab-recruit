@@ -24,12 +24,12 @@ const Stopwatch = () => {
       </div>
       <div className="flex flex-col justify-center items-center *:rounded-md *:my-1">
         <Button onClick={() => setIsRunning((isRunning) => !isRunning)}>
-          Click
+          Toggle Timer
         </Button>
         <Button
           onClick={() => {
             setTimer(0);
-            setIsRunning((isRunning) => !isRunning);
+            setIsRunning(false);
           }}
         >
           Reset
