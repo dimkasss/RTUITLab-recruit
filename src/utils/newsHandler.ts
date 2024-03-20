@@ -20,6 +20,7 @@ const getFilteredNews = (
   isFavOnly: boolean,
   fav: IArticle[]
 ): IArticle[] => {
+  filter = filter.toLowerCase();
   const res: IArticle[] = [];
   articles?.filter((article) => {
     if (
