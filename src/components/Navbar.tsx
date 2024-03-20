@@ -2,8 +2,8 @@ import { useContext } from "react";
 import Button from "./Button";
 import { ThemeContext } from "./ThemeProvider";
 
-import RTUITLabLogoBlack from "../assets/logo-black.svg";
-import RTUITLabLogoLight from "../assets/logo-white.svg";
+import RTUITLabLogoBlack from "/logo-black.svg";
+import RTUITLabLogoLight from "/logo-white.svg";
 import NavButton from "./NavButton";
 import { Link } from "react-router-dom";
 
@@ -26,15 +26,9 @@ const Navbar = () => {
         <NavButton to="/clock">Clock</NavButton>
         <Button onClick={toggleTheme}>
           {theme === "light" ? (
-            <img
-              src="src/assets/lightmode.png"
-              className="w-[20px] md:w-[25px]"
-            />
+            <img src="/lightmode.png" className="w-[20px] md:w-[25px]" />
           ) : (
-            <img
-              src="src/assets/nightmode.png"
-              className="w-[20px] md:w-[25px]"
-            />
+            <img src="/nightmode.png" className="w-[20px] md:w-[25px]" />
           )}
         </Button>
       </div>

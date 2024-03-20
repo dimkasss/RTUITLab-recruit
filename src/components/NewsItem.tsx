@@ -71,11 +71,11 @@ const NewsItem: React.FC<INewsItem> = ({ article, fav, setFav }) => {
       >
         {fav.filter((f) => JSON.stringify(f) == JSON.stringify(article))
           .length > 0 ? (
-          <img src="src\assets\fav.svg" width="20px"></img>
+          <img src="/fav.svg" width="20px"></img>
         ) : theme === "light" ? (
-          <img src="src\assets\not-fav.svg" width="20px"></img>
+          <img src="/not-fav.svg" width="20px"></img>
         ) : (
-          <img src="src\assets\not-fav-dark.svg" width="20px"></img>
+          <img src="/not-fav-dark.svg" width="20px"></img>
         )}
       </Button>
     </div>
