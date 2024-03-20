@@ -2,16 +2,6 @@ import { Button } from "flowbite-react";
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeProvider";
 
-// export interface IArticle {
-//   id: string;
-//   name: string;
-//   description: string;
-//   url: string;
-//   category: string;
-//   language: string;
-//   country: string;
-// }
-
 export interface IArticle {
   source: {
     id: string;

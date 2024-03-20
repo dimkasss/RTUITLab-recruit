@@ -3,7 +3,7 @@ import { getFilteredNews, getNews, getNewsAuthors } from "../utils/newsHandler";
 import NewsItem, { IArticle } from "../components/NewsItem";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../utils/useDebounce";
-import DropDownNewsFilter from "../components/DropDownNewsFilter/DropDownNewsFilter";
+import DropDownNewsFilter from "../components/DropDown/DropDown";
 
 const NewsPage = () => {
   const { isPending, error, data } = useQuery({

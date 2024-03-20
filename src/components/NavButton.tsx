@@ -16,7 +16,7 @@ const NavButton: FC<INavButton> = ({ children, to }) => {
           isActive ? "font-semibold" : "",
           isTransitioning ? "transitioning" : "",
         ].join(" ") +
-        " border border-[--text] p-2 py-3 md:p-3 md:px-5 rounded-xl hover:border-white hover:bg-[--btn] transition duration-75"
+        " border border-[--text] p-1.5 py-3 md:p-3 md:px-5 rounded-xl hover:border-white hover:bg-[--btn] transition duration-75 text-xs sm:text-base"
       }
     >
       {children}

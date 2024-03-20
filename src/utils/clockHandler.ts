@@ -83,8 +83,8 @@ const getDigitalFromNumerical = (num: number): ActiveSidesList => {
 };
 
 const timezones = new Set([
-  "Europe/Kaliningrad",
   "Europe/Moscow",
+  "Europe/Kaliningrad",
   "Europe/Simferopol",
   "Europe/Kirov",
   "Europe/Astrakhan",

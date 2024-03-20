@@ -1,17 +1,13 @@
 import { Dropdown } from "flowbite-react";
 import DropDownTheme from "./DropDownTheme";
 
-interface IDropDownNewsFilter {
+interface IDropDown {
   data: Set<string>;
   onPick: (category: string) => void;
   label: string;
 }
 
-const DropDownNewsFilter: React.FC<IDropDownNewsFilter> = ({
-  data,
-  onPick,
-  label,
-}) => {
+const DropDown: React.FC<IDropDown> = ({ data, onPick, label }) => {
   return (
     <Dropdown
       theme={DropDownTheme}
@@ -28,4 +24,4 @@ const DropDownNewsFilter: React.FC<IDropDownNewsFilter> = ({
   );
 };
 
-export default DropDownNewsFilter;
+export default DropDown;

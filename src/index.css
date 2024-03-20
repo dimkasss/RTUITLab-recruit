@@ -23,6 +23,7 @@ body {
   --text-minor: #3c3c3b;
   --border-half-opacity: rgba(156, 156, 156, 0.5);
   --bg: #f8f8f8;
+  --bg-shadow: #f3f3f3;
   --link: #016fff;
   --btn: #0ce9b2;
   --bg-minor: #ffffff;
@@ -35,5 +36,6 @@ body.dark {
   --btn: #4e67eb;
   --link: #8094f8;
   --bg: #1e1e2c;
+  --bg-shadow: #252538;
   --bg-minor: #2d2d44;
 }

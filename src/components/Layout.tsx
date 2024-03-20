@@ -7,7 +7,7 @@ const Layout: FC = () => {
     <>
       <Navbar />
       <div className="flex justify-center">
-        <div className="w-full p-3 lg:w-1/2 bg-[--bg] flex flex-col items-center">
+        <div className="w-full p-3 lg:w-1/2 bg-[--bg] flex flex-col items-center py-16">
           <Outlet />
         </div>
       </div>
