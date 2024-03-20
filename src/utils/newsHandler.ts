@@ -24,11 +24,11 @@ const getFilteredNews = (
   const res: IArticle[] = [];
   articles?.filter((article) => {
     if (
-      (article.author?.includes(filter) ||
-        article.title.includes(filter) ||
-        article.description?.includes(filter) ||
-        article.content?.includes(filter) ||
-        article.publishedAt.includes(filter)) &&
+      (article.author?.toLowerCase().includes(filter) ||
+        article.title.toLowerCase().includes(filter) ||
+        article.description?.toLowerCase().includes(filter) ||
+        article.content?.toLowerCase().includes(filter) ||
+        article.publishedAt.toLowerCase().includes(filter)) &&
       (article.author == author ||
         author == "" ||
         author == "No specified author")
